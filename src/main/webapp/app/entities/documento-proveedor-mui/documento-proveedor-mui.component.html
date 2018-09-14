@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span>Documento Proveedors</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-documento-proveedor-mui" [routerLink]="['/documento-proveedor-mui/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Documento Proveedor
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="documentoProveedors">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nombre</span></th>
+            <th><span>Extension</span></th>
+            <th><span>Tipo</span></th>
+            <th><span>Contenido</span></th>
+            <th><span>Proveedor</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let documentoProveedor of documentoProveedors ;trackBy: trackId">
+                <td><a [routerLink]="['/documento-proveedor-mui', documentoProveedor.id, 'view' ]">{{documentoProveedor.id}}</a></td>
+                <td>{{documentoProveedor.nombre}}</td>
+                <td>{{documentoProveedor.extension}}</td>
+                <td>{{documentoProveedor.tipo}}</td>
+                <td>
+                    <a *ngIf="documentoProveedor.contenido" (click)="openFile(documentoProveedor.contenidoContentType, documentoProveedor.contenido)">open</a>
+                    <span *ngIf="documentoProveedor.contenido">{{documentoProveedor.contenidoContentType}}, {{byteSize(documentoProveedor.contenido)}}</span>
+                </td>
+                <td>
+                    <div *ngIf="documentoProveedor.proveedorId">
+                        <a [routerLink]="['../proveedor-mui', documentoProveedor.proveedorId , 'view' ]" >{{documentoProveedor.proveedorId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/documento-proveedor-mui', documentoProveedor.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/documento-proveedor-mui', documentoProveedor.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'documento-proveedor-mui/'+ documentoProveedor.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+entity Persona {
+	nombre String required
+    apellido1 String required
+    apellido2 String
+    curp String
+    rfc String required
+}
+
+entity Direccion {
+	calle String
+    numero String
+    colonia String
+    cp String
+    municipio String
+    estado String
+}
+
+entity DocumentoProveedor {
+	nombre String
+    extension String
+    tipo String
+    contenido Blob
+}
+
+entity User (jhi_user) {
+}
+
+entity Proveedor {
+
+}
+
+entity Adscripcion {
+	nombre String
+    clave String
+}
+
+entity Empleado {
+
+}
+
+relationship OneToOne {
+    Proveedor{direccion} to Direccion,
+    Proveedor{persona} to Persona,
+    Proveedor{usuario} to User,
+    Empleado{usuario} to User,
+    Empleado{persona} to Persona
+}
+
+relationship ManyToMany {
+	// Job{task(title)} to Task{job}
+    Empleado{adscripciones} to Adscripcion,
+    Adscripcion{empleados} to Empleado,
+    Proveedor{adscripciones} to Adscripcion,
+    Adscripcion{proveedor} to Proveedor
+
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+    Proveedor{documentos} to DocumentoProveedor,
+    	  Proveedor{responsable} to Empleado,
+           Proveedor{adscripcion} to Adscripcion
+
+}
+
+ //relationship ManyToOne {
+	//Employee{manager} to Employee
+//     
+//}
+
+
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate Proveedor with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with mui

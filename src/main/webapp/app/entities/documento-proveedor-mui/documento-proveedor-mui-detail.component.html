@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="documentoProveedor">
+            <h2><span>Documento Proveedor</span> {{documentoProveedor.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{documentoProveedor.nombre}}</span>
+                </dd>
+                <dt><span>Extension</span></dt>
+                <dd>
+                    <span>{{documentoProveedor.extension}}</span>
+                </dd>
+                <dt><span>Tipo</span></dt>
+                <dd>
+                    <span>{{documentoProveedor.tipo}}</span>
+                </dd>
+                <dt><span>Contenido</span></dt>
+                <dd>
+                    <div *ngIf="documentoProveedor.contenido">
+                        <a (click)="openFile(documentoProveedor.contenidoContentType, documentoProveedor.contenido)">open</a>
+                        {{documentoProveedor.contenidoContentType}}, {{byteSize(documentoProveedor.contenido)}}
+                    </div>
+                </dd>
+                <dt><span>Proveedor</span></dt>
+                <dd>
+                    <div *ngIf="documentoProveedor.proveedorId">
+                        <a [routerLink]="['/proveedor-mui', documentoProveedor.proveedorId, 'view']">{{documentoProveedor.proveedorId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/documento-proveedor-mui', documentoProveedor.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
