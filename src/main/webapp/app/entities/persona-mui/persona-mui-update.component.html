@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-persona-mui-heading">Create or edit a Persona</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!persona.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="persona.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                        [(ngModel)]="persona.nombre" required/>
+                    <div [hidden]="!(editForm.controls.nombre?.dirty && editForm.controls.nombre?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nombre?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_apellido1">Apellido 1</label>
+                    <input type="text" class="form-control" name="apellido1" id="field_apellido1"
+                        [(ngModel)]="persona.apellido1" required/>
+                    <div [hidden]="!(editForm.controls.apellido1?.dirty && editForm.controls.apellido1?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.apellido1?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_apellido2">Apellido 2</label>
+                    <input type="text" class="form-control" name="apellido2" id="field_apellido2"
+                        [(ngModel)]="persona.apellido2" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_curp">Curp</label>
+                    <input type="text" class="form-control" name="curp" id="field_curp"
+                        [(ngModel)]="persona.curp" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rfc">Rfc</label>
+                    <input type="text" class="form-control" name="rfc" id="field_rfc"
+                        [(ngModel)]="persona.rfc" required/>
+                    <div [hidden]="!(editForm.controls.rfc?.dirty && editForm.controls.rfc?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.rfc?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

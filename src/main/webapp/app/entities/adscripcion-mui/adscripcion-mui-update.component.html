@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-adscripcion-mui-heading">Create or edit a Adscripcion</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!adscripcion.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="adscripcion.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                        [(ngModel)]="adscripcion.nombre" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_clave">Clave</label>
+                    <input type="text" class="form-control" name="clave" id="field_clave"
+                        [(ngModel)]="adscripcion.clave" />
+                </div>
+
+                <div class="form-group">
+                    <label for="field_empleados">Empleados</label>
+                    <select class="form-control" id="field_empleados" multiple name="empleados" [(ngModel)]="adscripcion.empleados">
+                        <option [ngValue]="getSelected(adscripcion.empleados, empleadoOption)" *ngFor="let empleadoOption of empleados; trackBy: trackEmpleadoById">{{empleadoOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_proveedor">Proveedor</label>
+                    <select class="form-control" id="field_proveedor" multiple name="proveedor" [(ngModel)]="adscripcion.proveedors">
+                        <option [ngValue]="getSelected(adscripcion.proveedors, proveedorOption)" *ngFor="let proveedorOption of proveedors; trackBy: trackProveedorById">{{proveedorOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_adscripcionResponsable">Adscripcion Responsable</label>
+                    <select class="form-control" id="field_adscripcionResponsable" name="adscripcionResponsable" [(ngModel)]="adscripcion.adscripcionResponsableId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="adscripcionResponsableOption.id" *ngFor="let adscripcionResponsableOption of adscripcionresponsables; trackBy: trackAdscripcionResponsableById">{{adscripcionResponsableOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

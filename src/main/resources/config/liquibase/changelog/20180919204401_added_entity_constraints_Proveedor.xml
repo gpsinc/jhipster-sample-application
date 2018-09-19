@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Proveedor.
+    -->
+    <changeSet id="20180919204401-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="direccion_id"
+                                 baseTableName="proveedor"
+                                 constraintName="fk_proveedor_direccion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="direccion"/>
+
+        <addForeignKeyConstraint baseColumnNames="persona_id"
+                                 baseTableName="proveedor"
+                                 constraintName="fk_proveedor_persona_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="persona"/>
+
+        <addForeignKeyConstraint baseColumnNames="usuario_id"
+                                 baseTableName="proveedor"
+                                 constraintName="fk_proveedor_usuario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="proveedors_id"
+                                 baseTableName="proveedor_adscripciones"
+                                 constraintName="fk_proveedor_adscripciones_proveedors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="proveedor"/>
+        <addForeignKeyConstraint baseColumnNames="adscripciones_id"
+                                 baseTableName="proveedor_adscripciones"
+                                 constraintName="fk_proveedor_adscripciones_adscripciones_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="adscripcion"/>
+        
+    </changeSet>
+</databaseChangeLog>

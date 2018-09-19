@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span>Adscripcions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-adscripcion-mui" [routerLink]="['/adscripcion-mui/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Adscripcion
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="adscripcions">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nombre</span></th>
+            <th><span>Clave</span></th>
+            <th><span>Empleados</span></th>
+            <th><span>Proveedor</span></th>
+            <th><span>Adscripcion Responsable</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let adscripcion of adscripcions ;trackBy: trackId">
+                <td><a [routerLink]="['/adscripcion-mui', adscripcion.id, 'view' ]">{{adscripcion.id}}</a></td>
+                <td>{{adscripcion.nombre}}</td>
+                <td>{{adscripcion.clave}}</td>
+                <td>
+                    <span *ngFor="let empleados of adscripcion.empleados; let last = last">
+                            <a class="form-control-static" [routerLink]="['../empleado-mui', empleados?.id, 'view' ]">{{empleados.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let proveedor of adscripcion.proveedors; let last = last">
+                            <a class="form-control-static" [routerLink]="['../proveedor-mui', proveedor?.id, 'view' ]">{{proveedor.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <div *ngIf="adscripcion.adscripcionResponsableId">
+                        <a [routerLink]="['../adscripcion-responsable-mui', adscripcion.adscripcionResponsableId , 'view' ]" >{{adscripcion.adscripcionResponsableId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/adscripcion-mui', adscripcion.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/adscripcion-mui', adscripcion.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'adscripcion-mui/'+ adscripcion.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

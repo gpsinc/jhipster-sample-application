@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="direccion">
+            <h2><span>Direccion</span> {{direccion.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Calle</span></dt>
+                <dd>
+                    <span>{{direccion.calle}}</span>
+                </dd>
+                <dt><span>Numero</span></dt>
+                <dd>
+                    <span>{{direccion.numero}}</span>
+                </dd>
+                <dt><span>Colonia</span></dt>
+                <dd>
+                    <span>{{direccion.colonia}}</span>
+                </dd>
+                <dt><span>Cp</span></dt>
+                <dd>
+                    <span>{{direccion.cp}}</span>
+                </dd>
+                <dt><span>Municipio</span></dt>
+                <dd>
+                    <span>{{direccion.municipio}}</span>
+                </dd>
+                <dt><span>Estado</span></dt>
+                <dd>
+                    <span>{{direccion.estado}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/direccion-mui', direccion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

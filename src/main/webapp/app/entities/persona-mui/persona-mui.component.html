@@ -1,0 +1,62 @@
+<div>
+    <h2 id="page-heading">
+        <span>Personas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-persona-mui" [routerLink]="['/persona-mui/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Persona
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="personas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nombre</span></th>
+            <th><span>Apellido 1</span></th>
+            <th><span>Apellido 2</span></th>
+            <th><span>Curp</span></th>
+            <th><span>Rfc</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let persona of personas ;trackBy: trackId">
+                <td><a [routerLink]="['/persona-mui', persona.id, 'view' ]">{{persona.id}}</a></td>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellido1}}</td>
+                <td>{{persona.apellido2}}</td>
+                <td>{{persona.curp}}</td>
+                <td>{{persona.rfc}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/persona-mui', persona.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/persona-mui', persona.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'persona-mui/'+ persona.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

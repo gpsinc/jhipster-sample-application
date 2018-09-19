@@ -40,6 +40,20 @@ public class CacheConfiguration {
             cm.createCache(gps.mx.poc.start.jhipster.sample.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(gps.mx.poc.start.jhipster.sample.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(gps.mx.poc.start.jhipster.sample.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.Persona.class.getName(), jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.Direccion.class.getName(), jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.DocumentoProveedor.class.getName(), jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.Proveedor.class.getName(), jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.Proveedor.class.getName() + ".documentos", jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.Proveedor.class.getName() + ".adscripciones", jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.Adscripcion.class.getName(), jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.Adscripcion.class.getName() + ".empleados", jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.Adscripcion.class.getName() + ".proveedors", jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.Empleado.class.getName(), jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.Empleado.class.getName() + ".adscripciones", jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.AdscripcionResponsable.class.getName(), jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.AdscripcionResponsable.class.getName() + ".responsables", jcacheConfiguration);
+            cm.createCache(gps.mx.poc.start.jhipster.sample.domain.AdscripcionResponsable.class.getName() + ".adscripcions", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
