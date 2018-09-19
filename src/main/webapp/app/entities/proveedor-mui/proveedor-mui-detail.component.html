@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="proveedor">
+            <h2><span>Proveedor</span> {{proveedor.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Direccion</span></dt>
+                <dd>
+                    <div *ngIf="proveedor.direccionId">
+                        <a [routerLink]="['/direccion-mui', proveedor.direccionId, 'view']">{{proveedor.direccionId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Persona</span></dt>
+                <dd>
+                    <div *ngIf="proveedor.personaId">
+                        <a [routerLink]="['/persona-mui', proveedor.personaId, 'view']">{{proveedor.personaId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Usuario</span></dt>
+                <dd>
+                    {{proveedor.usuarioId}}
+                </dd>
+                <dt><span>Adscripciones</span></dt>
+                <dd>
+                    <span *ngFor="let adscripciones of proveedor.adscripciones; let last = last">
+                        <a [routerLink]="['/adscripcion-mui', adscripciones?.id, 'view' ]">{{adscripciones.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/proveedor-mui', proveedor.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

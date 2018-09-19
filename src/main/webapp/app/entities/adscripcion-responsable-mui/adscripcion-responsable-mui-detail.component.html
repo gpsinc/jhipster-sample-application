@@ -1,0 +1,29 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="adscripcionResponsable">
+            <h2><span>Adscripcion Responsable</span> {{adscripcionResponsable.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Proveedor</span></dt>
+                <dd>
+                    <div *ngIf="adscripcionResponsable.proveedorId">
+                        <a [routerLink]="['/proveedor-mui', adscripcionResponsable.proveedorId, 'view']">{{adscripcionResponsable.proveedorId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/adscripcion-responsable-mui', adscripcionResponsable.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

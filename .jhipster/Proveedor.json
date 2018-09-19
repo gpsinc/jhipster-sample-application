@@ -1,0 +1,60 @@
+{
+    "name": "Proveedor",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "direccion",
+            "otherEntityName": "direccion",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "proveedor"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "persona",
+            "otherEntityName": "persona",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "proveedor"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "usuario",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "proveedor"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "documentos",
+            "otherEntityName": "documentoProveedor",
+            "otherEntityRelationshipName": "proveedor"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "adscripciones",
+            "otherEntityName": "adscripcionResponsable",
+            "otherEntityRelationshipName": "proveedor"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "adscripciones",
+            "otherEntityName": "adscripcion",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20180919204401",
+    "entityTableName": "proveedor",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mui"
+}

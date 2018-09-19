@@ -5,6 +5,18 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180919204357_added_entity_Persona.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180919204358_added_entity_Direccion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180919204359_added_entity_DocumentoProveedor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180919204401_added_entity_Proveedor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180919204402_added_entity_Adscripcion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180919204403_added_entity_Empleado.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180919204404_added_entity_AdscripcionResponsable.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180919204359_added_entity_constraints_DocumentoProveedor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180919204401_added_entity_constraints_Proveedor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180919204402_added_entity_constraints_Adscripcion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180919204403_added_entity_constraints_Empleado.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180919204404_added_entity_constraints_AdscripcionResponsable.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

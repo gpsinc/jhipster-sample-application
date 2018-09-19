@@ -1,0 +1,34 @@
+{
+    "name": "AdscripcionResponsable",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipName": "proveedor",
+            "otherEntityName": "proveedor",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "responsable",
+            "otherEntityName": "empleado",
+            "otherEntityRelationshipName": "adscripcionResponsable"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "adscripcion",
+            "otherEntityName": "adscripcion",
+            "otherEntityRelationshipName": "adscripcionResponsable"
+        }
+    ],
+    "changelogDate": "20180919204404",
+    "entityTableName": "adscripcion_responsable",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mui"
+}
